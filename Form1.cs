@@ -17,8 +17,16 @@ namespace GW2MapGetTool
     {
         public int t = Properties.Settings.Default.数据;
         public int tx = Properties.Settings.Default.层级数据;
+        public int txm = Properties.Settings.Default.最大x获取;
         public bool autoget = Properties.Settings.Default.autoget;
-        public int[] 层级X数目 = { 0,3, 5, 10, 20, 40, 79, 157 };
+        public int[] 层级X数目 = { 0,
+            Properties.Settings.Default.设置1,
+            Properties.Settings.Default.设置2,
+            Properties.Settings.Default.设置3,
+            Properties.Settings.Default.设置4,
+            Properties.Settings.Default.设置5,
+            Properties.Settings.Default.设置6,
+            Properties.Settings.Default.设置7 };
         public Form1()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -29,6 +37,14 @@ namespace GW2MapGetTool
             label3.Text = "0";
             label7.Text = "0";
             label8.Text = tx.ToString();
+            numericUpDown1.Value = 层级X数目[1];
+            numericUpDown2.Value = 层级X数目[2];
+            numericUpDown3.Value = 层级X数目[3];
+            numericUpDown4.Value = 层级X数目[4];
+            numericUpDown5.Value = 层级X数目[5];
+            numericUpDown6.Value = 层级X数目[6];
+            numericUpDown7.Value = 层级X数目[7];
+            numericUpDown8.Value = txm;
         }
         int 完成数 = 0;
         int 项目数 = 0;
@@ -131,7 +147,7 @@ namespace GW2MapGetTool
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            if (t< 149)
+            if (t< txm)
             {
                 t++;
             }
@@ -168,7 +184,7 @@ namespace GW2MapGetTool
             if (完成数 == 项目数 && 错误数 ==0 && 项目数 > 0)
             {
                 
-                if (t <149)
+                if (t < txm)
                 {
                     t++;
                     label1.Text = t.ToString();
@@ -260,6 +276,55 @@ namespace GW2MapGetTool
                 Properties.Settings.Default.层级数据 = tx;
                 Properties.Settings.Default.Save();
             }
+        }
+
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            
+            Properties.Settings.Default.设置1 = 层级X数目[1] = (int)numericUpDown1.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.设置2 = 层级X数目[2] = (int)numericUpDown2.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.设置3 = 层级X数目[3] = (int)numericUpDown3.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.设置4 = 层级X数目[4] = (int)numericUpDown4.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.设置5 = 层级X数目[5] = (int)numericUpDown5.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.设置6 = 层级X数目[6] = (int)numericUpDown6.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.设置7 = 层级X数目[7] = (int)numericUpDown7.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void NumericUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.最大x获取 = txm = (int)numericUpDown8.Value ;
+            Properties.Settings.Default.Save();
         }
     }
 }

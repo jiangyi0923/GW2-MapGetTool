@@ -58,5 +58,113 @@ namespace GW2MapGetTool.Properties {
                 this["层级数据"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int 设置 {
+            get {
+                return ((int)(this["设置"]));
+            }
+            set {
+                this["设置"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int 设置1 {
+            get {
+                return ((int)(this["设置1"]));
+            }
+            set {
+                this["设置1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int 设置2 {
+            get {
+                return ((int)(this["设置2"]));
+            }
+            set {
+                this["设置2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int 设置3 {
+            get {
+                return ((int)(this["设置3"]));
+            }
+            set {
+                this["设置3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int 设置4 {
+            get {
+                return ((int)(this["设置4"]));
+            }
+            set {
+                this["设置4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        public int 设置5 {
+            get {
+                return ((int)(this["设置5"]));
+            }
+            set {
+                this["设置5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("79")]
+        public int 设置6 {
+            get {
+                return ((int)(this["设置6"]));
+            }
+            set {
+                this["设置6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("157")]
+        public int 设置7 {
+            get {
+                return ((int)(this["设置7"]));
+            }
+            set {
+                this["设置7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("149")]
+        public int 最大x获取 {
+            get {
+                return ((int)(this["最大x获取"]));
+            }
+            set {
+                this["最大x获取"] = value;
+            }
+        }
     }
 }

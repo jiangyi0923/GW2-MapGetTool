@@ -11,5 +11,32 @@
     <Setting Name="层级数据" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="设置" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="设置1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="设置2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="设置3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="设置4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="设置5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="设置6" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">79</Value>
+    </Setting>
+    <Setting Name="设置7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">157</Value>
+    </Setting>
+    <Setting Name="最大x获取" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">149</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
