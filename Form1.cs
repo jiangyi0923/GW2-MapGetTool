@@ -358,6 +358,7 @@ namespace GW2MapGetTool
         public int[] 地区集合;
         public int[] 地图ID集合;
         public int 当前项目排序 = 0;
+        public bool 下载地图信息中 = false;
         #endregion
 
         //重载默认
@@ -370,7 +371,7 @@ namespace GW2MapGetTool
         {
             if (dataTable.Rows.Count >= 1)
             {
-                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+                dataGridView1.Rows.Remove(dataGridView1.Rows[dataGridView1.CurrentRow.Index]);
             }
         }
         //地图保存
@@ -465,7 +466,15 @@ namespace GW2MapGetTool
         private void button8_Click(object sender, EventArgs e)
         {
             获取();
-            下载数据(); 
+            if (Properties.Settings.Default.自动获取信息)
+            {
+                timer2.Enabled = true;
+            }
+            else
+            {
+                下载数据();
+            }
+            
         }
         //增加地图
         private void button9_Click(object sender, EventArgs e)
@@ -528,12 +537,19 @@ namespace GW2MapGetTool
             label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
         }
 
+        public void 开始获取地图数据()
+        {
+            Thread thread = new Thread(new ParameterizedThreadStart(delegate { 下载数据(); }))
+            {
+                IsBackground = true
+            };
+            thread.Start();
+        }
+
+
         public string 回车 = " \r\n";
         public void 下载数据()
         {
-
-
-
             //根据当前下载数据
             textBox2.AppendText("尝试获取:排序- "+ 当前项目排序 + " 地图ID:" + 地图ID集合[当前项目排序] + 回车);
             string jsonString = "";
@@ -632,6 +648,7 @@ namespace GW2MapGetTool
                 当前项目排序++;
                 label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
                 label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
+                下载地图信息中 = false;
             }
         }
 
@@ -652,6 +669,15 @@ namespace GW2MapGetTool
             }
             tmp += "]";
             return tmp;
+        }
+
+        private void Timer2_Tick(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.自动获取信息 && !下载地图信息中&& 当前项目排序 < 地图ID集合.Length)
+            {
+                下载地图信息中 = true;
+                开始获取地图数据();
+            }
         }
     }
 }

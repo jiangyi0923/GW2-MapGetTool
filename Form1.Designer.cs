@@ -86,6 +86,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label19 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -720,6 +721,11 @@
             this.label19.TabIndex = 0;
             this.label19.Text = "地图参数";
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 500;
+            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -810,6 +816,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
