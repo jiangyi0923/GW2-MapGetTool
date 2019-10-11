@@ -401,7 +401,7 @@ namespace GW2MapGetTool
             //dataTable.Rows.Add(new object[] { "迷城峭壁", 1, 5, 922 });
             dataTable.Rows.Add(new object[] { "灵魂山谷", 1, 10, 1147 });
             dataTable.Rows.Add(new object[] { "救赎小道", 1, 10, 1149 });
-            dataTable.Rows.Add(new object[] { "狮子拱门机场", 1, 4, 1155 });
+            //dataTable.Rows.Add(new object[] { "狮子拱门机场", 1, 4, 1155 });
             dataTable.Rows.Add(new object[] { "信仰要塞", 1, 10, 1156 });
             dataTable.Rows.Add(new object[] { "忏悔者堡垒", 1, 10, 1188 });
             dataTable.Rows.Add(new object[] { "阿达西姆之钥", 49, 12, 1323 });
