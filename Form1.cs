@@ -343,6 +343,7 @@ namespace GW2MapGetTool
             {
                 重新载入();
             }
+            赋值参数();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -395,127 +396,68 @@ namespace GW2MapGetTool
             dataTable.Rows.Add(new object[] { "霍布雷克", 1, 1, 326 });
             dataTable.Rows.Add(new object[] { "利爪岛", 1, 4, 335 });
             dataTable.Rows.Add(new object[] { "北方之眼", 1, 1, 807 });
-            dataTable.Rows.Add(new object[] { "迷城峭壁", 1, 5, 922 });
+            //dataTable.Rows.Add(new object[] { "迷城峭壁", 1, 5, 922 });
             dataTable.Rows.Add(new object[] { "灵魂山谷", 1, 10, 1147 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1147?wiki=1&lang=zh 灵魂山谷
             dataTable.Rows.Add(new object[] { "救赎小道", 1, 10, 1149 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1149?wiki=1&lang=zh 救赎小道
             dataTable.Rows.Add(new object[] { "狮子拱门机场", 1, 4, 1155 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/1155?wiki=1&lang=zh 机场
             dataTable.Rows.Add(new object[] { "信仰要塞", 1, 10, 1156 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1156?wiki=1&lang=zh 信仰要塞
             dataTable.Rows.Add(new object[] { "忏悔者堡垒", 1, 10, 1188 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1188?wiki=1&lang=zh 忏悔者堡垒
             dataTable.Rows.Add(new object[] { "阿达西姆之钥", 49, 12, 1323 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1323?wiki=1&lang=zh 阿达西姆之钥
             dataTable.Rows.Add(new object[] { "镀金山洞", 0, 10, 1068 });
-            //https://api.guildwars2.com/v2/continents/1/floors/0/regions/10/maps/1068?wiki=1&lang=zh 镀金山洞
             dataTable.Rows.Add(new object[] { "失落悬崖", 1, 10, 1069 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1069?wiki=1&lang=zh 失落悬崖
             dataTable.Rows.Add(new object[] { "迎风庇护所", 49, 12, 1214 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1214?wiki=1&lang=zh 迎风庇护所
             dataTable.Rows.Add(new object[] { "法兰努尔，第一座城市", 1, 12, 1268 });
             //https://api.guildwars2.com/v2/continents/1/floors/1/regions/12/maps/1268?wiki=1&lang=zh 法兰努尔，第一座城市
             dataTable.Rows.Add(new object[] { "卡尔段直升", 1, 5, 34 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/5/maps/34?wiki=1&lang=en 卡尔段直升
             dataTable.Rows.Add(new object[] { "度量领域", 1, 5, 35 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/5/maps/35?wiki=1&lang=en 度量领域
             dataTable.Rows.Add(new object[] { "阿斯福德平原", 1, 2, 19 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/19?wiki=1&lang=en 阿斯福德平原
             dataTable.Rows.Add(new object[] { "女王谷", 1, 4, 15 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/15?wiki=1&lang=en 女王谷
             dataTable.Rows.Add(new object[] { "旅者丘陵", 1, 1, 28 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/28?wiki=1&lang=en 旅者丘陵
             dataTable.Rows.Add(new object[] { "布里斯班野地", 1, 5, 54 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/5/maps/54?wiki=1&lang=en 布里斯班野地
             dataTable.Rows.Add(new object[] { "底耶沙高地", 1, 2, 32 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/32?wiki=1&lang=en 底液儍高地
             dataTable.Rows.Add(new object[] { "凯席斯山", 1, 4, 23 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/23?wiki=1&lang=en 凯席斯山
             dataTable.Rows.Add(new object[] { "漂流雪境", 1, 1, 31 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/31?wiki=1&lang=en 漂流雪境
             dataTable.Rows.Add(new object[] { "甘达拉战区", 1, 4, 24 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/24?wiki=1&lang=en 嘎达那咱去
             dataTable.Rows.Add(new object[] { "罗拉通道", 1, 1, 27 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/27?wiki=1&lang=en 罗拉通道
             dataTable.Rows.Add(new object[] { "废墟原野", 1, 2, 21 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/21?wiki=1&lang=en 废墟原野
             dataTable.Rows.Add(new object[] { "哈拉希腹地", 1, 4, 17 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/17?wiki=1&lang=en 哈拉希腹地
             dataTable.Rows.Add(new object[] { "裂脊草原", 1, 2, 20 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/20?wiki=1&lang=en 劣迹草原
             dataTable.Rows.Add(new object[] { "掘洞悬崖", 1, 1, 26 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/26?wiki=1&lang=en 掘洞悬崖
             dataTable.Rows.Add(new object[] { "血潮海岸", 1, 4, 73 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/73?wiki=1&lang=en 血槽海岸
             dataTable.Rows.Add(new object[] { "钢铁平原", 1, 2, 25 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/25?wiki=1&lang=en 钢铁平原
             dataTable.Rows.Add(new object[] { "林线瀑布", 1, 1, 29 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/29?wiki=1&lang=en 林线瀑布
             dataTable.Rows.Add(new object[] { "闪萤沼泽", 1, 8, 53 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/8/maps/53?wiki=1&lang=en 闪萤沼泽
             dataTable.Rows.Add(new object[] { "炎心高地", 1, 2, 22 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/22?wiki=1&lang=en 岩心高地
             dataTable.Rows.Add(new object[] { "漩涡山", 1, 8, 39 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/8/maps/39?wiki=1&lang=en 漩涡上
             dataTable.Rows.Add(new object[] { "浩劫海峡", 1, 3, 51 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/3/maps/51?wiki=1&lang=en 浩劫海啸
             dataTable.Rows.Add(new object[] { "霜谷之音", 1, 1, 30 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/30?wiki=1&lang=en 霜谷之音
             dataTable.Rows.Add(new object[] { "马尔科之跃", 1, 3, 65 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/3/maps/65?wiki=1&lang=en 马尔科之跃
             dataTable.Rows.Add(new object[] { "诅咒海岸", 1, 3, 62 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/3/maps/62?wiki=1&lang=en 诅咒海岸
             dataTable.Rows.Add(new object[] { "南阳海湾", 1, 4, 873 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/873?wiki=1&lang=en 南阳海湾
             dataTable.Rows.Add(new object[] { "干凅高地", 1, 11, 988 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/11/maps/988?wiki=1&lang=en 干枯高地
             dataTable.Rows.Add(new object[] { "白银荒地", 1, 11, 1015 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/11/maps/1015?wiki=1&lang=en 白银荒地
             dataTable.Rows.Add(new object[] { "苍翠边界", 1, 10, 1052 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1052?wiki=1&lang=en 苍翠边界
             dataTable.Rows.Add(new object[] { "赤金盆地", 1, 10, 1043 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1043?wiki=1&lang=en 赤金盆地
             dataTable.Rows.Add(new object[] { "缠藤深渊", 1, 10, 1045 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1045?wiki=1&lang=en 缠藤深渊
             dataTable.Rows.Add(new object[] { "巨龙阵地", 1, 10, 1041 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1041?wiki=1&lang=en 巨龙阵地
             dataTable.Rows.Add(new object[] { "血石沼泽", 1, 10, 1165 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/10/maps/1165?wiki=1&lang=en 血石沼泽
             dataTable.Rows.Add(new object[] { "余烬海湾", 1, 20, 1175 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/20/maps/1175?wiki=1&lang=en 余烬海湾
             dataTable.Rows.Add(new object[] { "酷寒前线", 1, 1, 1178 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/1178?wiki=1&lang=en 酷寒前线
             dataTable.Rows.Add(new object[] { "多里克湖", 1, 4, 1185 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/4/maps/1185?wiki=1&lang=en 多里克湖
             dataTable.Rows.Add(new object[] { "巨龙之山", 1, 20, 1195 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/20/maps/1195?wiki=1&lang=en 巨龙之山
             dataTable.Rows.Add(new object[] { "海妖平台", 1, 3, 1203 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/3/maps/1203?wiki=1&lang=en 海妖平台
             dataTable.Rows.Add(new object[] { "沙漠高地", 49, 12, 1211 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1211?wiki=1&lang=en 沙漠高地
             dataTable.Rows.Add(new object[] { "水晶绿洲", 49, 12, 1210 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1210?wiki=1&lang=en 水晶沙漠
             dataTable.Rows.Add(new object[] { "伊伦河湾", 49, 12, 1228 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1228?wiki=1&lang=en 伊伦河湾
             dataTable.Rows.Add(new object[] { "荒芜之地", 49, 12, 1226 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1226?wiki=1&lang=en 荒芜之地
             dataTable.Rows.Add(new object[] { "瓦比领域", 49, 12, 1248 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1248?wiki=1&lang=en 瓦比领域
             dataTable.Rows.Add(new object[] { "伊斯坦领域", 1, 12, 1263 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/12/maps/1263?wiki=1&lang=en 伊斯坦领域
             dataTable.Rows.Add(new object[] { "沙掠群岛", 49, 12, 1271 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1271?wiki=1&lang=zh 沙掠群岛
             dataTable.Rows.Add(new object[] { "克南领域", 49, 12, 1288 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1288?wiki=1&lang=en 克南领域
             dataTable.Rows.Add(new object[] { "亚哈悬崖", 49, 12, 1301 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1301?wiki=1&lang=en 亚哈悬崖
             dataTable.Rows.Add(new object[] { "雷云高峰", 1, 1, 1310 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/1/maps/1310?wiki=1&lang=en 雷云高峰
             dataTable.Rows.Add(new object[] { "坠龙之地", 49, 12, 1317 });
-            //https://api.guildwars2.com/v2/continents/1/floors/49/regions/12/maps/1317?wiki=1&lang=en 坠龙之地
             dataTable.Rows.Add(new object[] { "戈瑟玛山谷", 1, 2, 1330 });
-            //https://api.guildwars2.com/v2/continents/1/floors/1/regions/2/maps/1330?wiki=1&lang=en 戈瑟玛山谷
             dataTable.WriteXml(".\\地图参数设置保存.xml", XmlWriteMode.WriteSchema, true);
             dataGridView1.DataSource = dataTable;
         }
@@ -523,24 +465,16 @@ namespace GW2MapGetTool
         private void button8_Click(object sender, EventArgs e)
         {
             获取();
-            if (Properties.Settings.Default.自动获取信息)
-            {
-                下载数据();
-            }
-            else
-            {
-                自动下载数据();
-            }
-            
+            下载数据(); 
         }
         //增加地图
         private void button9_Click(object sender, EventArgs e)
         {
-            if (地板集合.Length < 当前项目排序)
+            if (地板集合.Length-1 > 当前项目排序)
             {
                 当前项目排序++;
                 label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
-                label21.Text = "当前地图排序:" + 当前项目排序.ToString();
+                label21.Text = "当前地图排序:" + 当前项目排序.ToString()+"/"+ (地板集合.Length - 1);
             }
         }
         //减少地图
@@ -548,9 +482,10 @@ namespace GW2MapGetTool
         {
             if (当前项目排序 > 0)
             {
+                textBox2.AppendText(当前项目排序.ToString());
                 当前项目排序--;
                 label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
-                label21.Text = "当前地图排序:" + 当前项目排序.ToString();
+                label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
             }
         }
         //重新获取
@@ -577,41 +512,146 @@ namespace GW2MapGetTool
 
         public void 赋值参数()
         {
+            textBox2.AppendText("开始赋值参数" + 回车);
             地板集合 = new int[dataTable.Rows.Count];
             地区集合 = new int[dataTable.Rows.Count];
             地图ID集合 = new int[dataTable.Rows.Count];
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-
                 地板集合[i] = int.Parse(dataTable.Rows[i][1].ToString());
                 地区集合[i] = int.Parse(dataTable.Rows[i][2].ToString());
                 地图ID集合[i] = int.Parse(dataTable.Rows[i][3].ToString());
-                textBox2.AppendText(dataTable.Rows[i][0].ToString() + "-地板:" + 地板集合[i] + ",地区:" + 地区集合[i] + ",地图ID:" + 地图ID集合[i] + "\r\n");
+                //textBox2.AppendText(dataTable.Rows[i][0].ToString() + "-地板:" + 地板集合[i] + ",地区:" + 地区集合[i] + ",地图ID:" + 地图ID集合[i] + "\r\n");
             }
+            textBox2.AppendText("赋值参数完成"+回车);
             label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
-            label21.Text = "当前地图排序:" + 当前项目排序.ToString();
+            label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
         }
 
+        public string 回车 = " \r\n";
         public void 下载数据()
         {
+
+
+
             //根据当前下载数据
+            textBox2.AppendText("尝试获取:排序- "+ 当前项目排序 + " 地图ID:" + 地图ID集合[当前项目排序] + 回车);
             string jsonString = "";
+            try
+            {
+                string ull = "https://api.guildwars2.com/v2/continents/1/floors/";
+                var wc3 = new WebClient();
+                wc3.Encoding = System.Text.Encoding.UTF8;
+                Uri dws1 = new Uri(ull + 地板集合[当前项目排序] + "/regions/" + 地区集合[当前项目排序] + "/maps/" + 地图ID集合[当前项目排序] + "?wiki=1&lang=zh");
+                jsonString = wc3.DownloadString(dws1);
+
+                textBox2.AppendText("当前排序:" + 当前项目排序 + "获取成功" + 回车);
+            }
+            catch (Exception e)
+            {
+                textBox2.AppendText("当前排序:" + 当前项目排序 + "获取失败" + 回车);
+            }
+
+
+            textBox2.AppendText("当前排序:" + 当前项目排序 + "开始解析" + 回车);
             //赋值数据
-            var mapI = MapinfosJs.FromJson(jsonString);
+            var mapI =  MapinfosJs.FromJson(jsonString);
             //解析数据---
             //解析地图
-
+            textBox2.AppendText("当前排序:" + 当前项目排序 + " - " + mapI.Name + " 解析完成" + 回车);
+            //"zoneid": "18","name": "神佑之城","level": {"min": 0,"max": 80},"area": {"top": 9856,"left": 10240,"bottom": 11648,"right": 12160},
+            textBox2.AppendText("dboMapZone.js 地图数据:" + 回车);
+            textBox2.AppendText("{\"zoneid\": \""+ mapI.Id+ "\", \"name\": \""+ mapI.Name + "\", \"level\": { \"min\": "+ mapI.MinLevel+ ",\"max\": "+ mapI.MaxLevel+ "},\"area\": { \"top\": "+ mapI.ContinentRect[0][1]+ ",\"left\": "+ mapI.ContinentRect[0][0] + ",\"bottom\": "+ mapI.ContinentRect[1][1] + ",\"right\": "+ mapI.ContinentRect[1][0] + "}}," + 回车);
             //解析各种点
-            //解析挑战
-            //解析专精
+            textBox2.AppendText("dboMapPoints.js 点数据:" + 回车);
+            //"{ \"zoneid\": \"++\",\"type\": \"++\",\"name\": \"++\",\"pos\": { \"x\": ++, \"y\": ++},\"chat_link\": \"++\"},"
+            foreach (var item in mapI.PointsOfInterest)
+            {
+                switch (item.Value.Type)
+                {
+                    case "landmark":
+                    case "waypoint":
+                    case "unlock":
+                        if (item.Value.Id == 2344)
+                        {
+                            item.Value.Name = "狮子拱门机场";
+                        }
+                        if (item.Value.Id == 2850)
+                        {
+                            item.Value.Name = "大型地下城——雾锁殿堂";
+                        }
+                        textBox2.AppendText("{ \"zoneid\": \""+ mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \""+item.Value.Name+"\",\"pos\": { \"x\": "+ item.Value.Coord[0] + ", \"y\": "+ item.Value.Coord[1] + "},\"chat_link\": \""+ item.Value.ChatLink+ "\"}," + 回车);
+                        break;
+                    case "vista":
+                        textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"观景点\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
+                        break;
+                        break;
+                    default:
+                        break;
+                }
+            }
             //解析爱心任务
+            //textBox2.AppendText("dboMapTask.js 任务数据:" + 回车);
+            foreach (var item in mapI.Tasks.Values)
+            {
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": \"" + item.Objective + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"}," + 回车);
+            }
+            //解析技能挑战
+            //textBox2.AppendText("dboMapSklls.js 地区数据:" + 回车);
+            foreach (var item in mapI.SkillChallenges)
+            {
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": \"技能点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+            }
+
+            //解析专精
+            //textBox2.AppendText("dboMapMasteryPoints.js 专精数据:" + 回车);
+            foreach (var item in mapI.MasteryPoints)
+            {
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"masteryPoints\",\"name\": \"专精点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+            }
+
+            //解析挑战
+            textBox2.AppendText("dboMapAdventures.js 挑战数据:" + 回车);
+            foreach (var item in mapI.Adventures)
+            {
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+            }
+
             //解析地区
+            textBox2.AppendText("dboMapSectors.js 地区数据:" + 回车);
+            foreach (var item in mapI.Sectors.Values)
+            {
+                
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":"+ getbounds(item.Bounds) + "}," + 回车);
+            }
+
             //解析完成---
+            textBox2.AppendText("解构完成 - - 可以开始下一个地图" + 回车);
+            if (Properties.Settings.Default.自动获取信息)
+            {
+                当前项目排序++;
+                label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
+                label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
+            }
         }
 
-        public void 自动下载数据()
+        public string getbounds(double[][] bounds)
         {
-
+            string tmp = "[";
+            for (int i = 0; i < bounds.Length; i++)
+            {
+                tmp += "["+ bounds[i][0]+","+ bounds[i][1] ;
+                if (i != bounds.Length-1)
+                {
+                    tmp += "],";
+                }
+                else
+                {
+                    tmp += "]";
+                }
+            }
+            tmp += "]";
+            return tmp;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace GW2MapGetTool
         [JsonProperty("default_floor", Required = Required.Always)]
         public long DefaultFloor { get; set; }
 
-        [JsonProperty("label_coord", Required = Required.Always)]
+        [JsonProperty("label_coord")]
         public long[] LabelCoord { get; set; }
 
         [JsonProperty("map_rect", Required = Required.Always)]
@@ -55,7 +55,7 @@ namespace GW2MapGetTool
         [JsonProperty("id", Required = Required.Always)]
         public long Id { get; set; }
 
-        [JsonProperty("mastery_points", Required = Required.Always)]
+        [JsonProperty("mastery_points")]
         public MasteryPoint[] MasteryPoints { get; set; }
     }
 
@@ -76,19 +76,19 @@ namespace GW2MapGetTool
 
     public partial class MasteryPoint
     {
-        [JsonProperty("coord", Required = Required.Always)]
+        [JsonProperty("coord")]
         public double[] Coord { get; set; }
 
-        [JsonProperty("id", Required = Required.Always)]
+        [JsonProperty("id")]
         public long Id { get; set; }
 
-        [JsonProperty("region", Required = Required.Always)]
+        [JsonProperty("region")]
         public string Region { get; set; }
     }
 
     public partial class PointsOfInterest
     {
-        [JsonProperty("name", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name", Required = Required.Default)]
         public string Name { get; set; }
 
         [JsonProperty("type", Required = Required.Always)]
