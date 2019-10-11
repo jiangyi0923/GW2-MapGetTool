@@ -359,6 +359,7 @@ namespace GW2MapGetTool
         public int[] 地图ID集合;
         public int 当前项目排序 = 0;
         public bool 下载地图信息中 = false;
+
         #endregion
 
         //重载默认
@@ -462,9 +463,69 @@ namespace GW2MapGetTool
             dataTable.WriteXml(".\\地图参数设置保存.xml", XmlWriteMode.WriteSchema, true);
             dataGridView1.DataSource = dataTable;
         }
+
+        public void 初始化数据文件() 
+        {
+            if (!Directory.Exists(".\\data"))
+            {
+                Directory.CreateDirectory(".\\data");
+            }
+            string sl1 =  "var mapzone = ["+ System.Environment.NewLine;
+            string sl2 =  "var mapsasterypoints = [" + System.Environment.NewLine;
+            string sl3 =  "var mappoints = [" + System.Environment.NewLine;
+            string sl4 =  "var mapsectors = [" + System.Environment.NewLine;
+            string sl5 =  "var mapadventure = [" + System.Environment.NewLine;
+            File.WriteAllText(".\\data\\dboMapZone.js", sl1, Encoding.UTF8);
+            File.WriteAllText(".\\data\\dboMapMasteryPoints.js", sl2, Encoding.UTF8);
+            File.WriteAllText(".\\data\\dboMapPoints.js", sl3, Encoding.UTF8);
+            File.WriteAllText(".\\data\\dboMapSectors.js", sl4, Encoding.UTF8);
+            //File.WriteAllText(".\\data\\dboMapAdventures.js", sl5, Encoding.UTF8);
+        }
+
+
+
+        public void 结束数据文件()
+        {
+            string[] sl1 = { "];" };
+
+            string TMP1 = File.ReadAllText(".\\data\\dboMapZone.js", Encoding.UTF8);
+            string TMP2 = File.ReadAllText(".\\data\\dboMapMasteryPoints.js", Encoding.UTF8);
+            string TMP3 = File.ReadAllText(".\\data\\dboMapPoints.js", Encoding.UTF8);
+            string TMP4 = File.ReadAllText(".\\data\\dboMapSectors.js", Encoding.UTF8);
+            //string TMP5 = File.ReadAllText(".\\data\\dboMapAdventures.js", Encoding.UTF8);
+
+            TMP1 = TMP1.Substring(0, TMP1.Length - 3) + System.Environment.NewLine; 
+            TMP2 = TMP2.Substring(0, TMP2.Length - 3) + System.Environment.NewLine;
+            TMP3 = TMP3.Substring(0, TMP3.Length - 3) + System.Environment.NewLine;
+            TMP4 = TMP4.Substring(0, TMP4.Length - 3) + System.Environment.NewLine;
+            //TMP5 = TMP5.Substring(0, TMP5.Length - 3) + System.Environment.NewLine;
+
+            File.WriteAllText(".\\data\\dboMapZone.js", TMP1, Encoding.UTF8);
+            File.WriteAllText(".\\data\\dboMapMasteryPoints.js", TMP2, Encoding.UTF8);
+            File.WriteAllText(".\\data\\dboMapPoints.js", TMP3, Encoding.UTF8);
+            File.WriteAllText(".\\data\\dboMapSectors.js", TMP4, Encoding.UTF8);
+            //File.WriteAllText(".\\data\\dboMapAdventures.js", TMP5, Encoding.UTF8);
+            //
+            File.AppendAllLines(".\\data\\dboMapZone.js", sl1, Encoding.UTF8);
+            File.AppendAllLines(".\\data\\dboMapMasteryPoints.js", sl1, Encoding.UTF8);
+            File.AppendAllLines(".\\data\\dboMapPoints.js", sl1, Encoding.UTF8);
+            File.AppendAllLines(".\\data\\dboMapSectors.js", sl1, Encoding.UTF8);
+            //File.AppendAllLines(".\\data\\dboMapAdventures.js", sl1, Encoding.UTF8);
+
+
+            //byte[] Save = Properties.Resources.arcdps;
+            //FileStream fsObj = new FileStream(".\\data\\arcdps.ini", FileMode.CreateNew);
+            //fsObj.Write(Save, 0, Save.Length);
+            //fsObj.Close();
+
+
+            textBox2.AppendText("全部完成并保存文件"+回车);
+        }
+
         //开始
         private void button8_Click(object sender, EventArgs e)
         {
+            初始化数据文件();
             获取();
             if (Properties.Settings.Default.自动获取信息)
             {
@@ -546,7 +607,6 @@ namespace GW2MapGetTool
             thread.Start();
         }
 
-
         public string 回车 = " \r\n";
         public void 下载数据()
         {
@@ -566,8 +626,8 @@ namespace GW2MapGetTool
             catch (Exception e)
             {
                 textBox2.AppendText("当前排序:" + 当前项目排序 + "获取失败" + 回车);
+                textBox2.BackColor = Color.Red;
             }
-
 
             textBox2.AppendText("当前排序:" + 当前项目排序 + "开始解析" + 回车);
             //赋值数据
@@ -575,12 +635,21 @@ namespace GW2MapGetTool
             //解析数据---
             //解析地图
             textBox2.AppendText("当前排序:" + 当前项目排序 + " - " + mapI.Name + " 解析完成" + 回车);
-            //"zoneid": "18","name": "神佑之城","level": {"min": 0,"max": 80},"area": {"top": 9856,"left": 10240,"bottom": 11648,"right": 12160},
             textBox2.AppendText("dboMapZone.js 地图数据:" + 回车);
+
+            if (mapI.Id == 988)
+            {
+                mapI.ContinentRect[0][1] = 15744;
+            }
+
+
             textBox2.AppendText("{\"zoneid\": \""+ mapI.Id+ "\", \"name\": \""+ mapI.Name + "\", \"level\": { \"min\": "+ mapI.MinLevel+ ",\"max\": "+ mapI.MaxLevel+ "},\"area\": { \"top\": "+ mapI.ContinentRect[0][1]+ ",\"left\": "+ mapI.ContinentRect[0][0] + ",\"bottom\": "+ mapI.ContinentRect[1][1] + ",\"right\": "+ mapI.ContinentRect[1][0] + "}}," + 回车);
+            string[] sl1 = { "  {\"zoneid\": \"" + mapI.Id + "\", \"name\": \"" + mapI.Name + "\", \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," };
+            File.AppendAllLines(".\\data\\dboMapZone.js", sl1, Encoding.UTF8);
             //解析各种点
             textBox2.AppendText("dboMapPoints.js 点数据:" + 回车);
-            //"{ \"zoneid\": \"++\",\"type\": \"++\",\"name\": \"++\",\"pos\": { \"x\": ++, \"y\": ++},\"chat_link\": \"++\"},"
+            string[] 所有1 = new string[mapI.PointsOfInterest.Count];
+            int tmp1 = 0;
             foreach (var item in mapI.PointsOfInterest)
             {
                 switch (item.Value.Type)
@@ -596,59 +665,149 @@ namespace GW2MapGetTool
                         {
                             item.Value.Name = "大型地下城——雾锁殿堂";
                         }
+                        if (item.Value.Id == 3053)
+                        {
+                            item.Value.Name = "大型地下城——阿达西姆之钥";
+                        }
                         textBox2.AppendText("{ \"zoneid\": \""+ mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \""+item.Value.Name+"\",\"pos\": { \"x\": "+ item.Value.Coord[0] + ", \"y\": "+ item.Value.Coord[1] + "},\"chat_link\": \""+ item.Value.ChatLink+ "\"}," + 回车);
+
+                        所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"" + item.Value.Name + "\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
+                        tmp1++;
+
                         break;
                     case "vista":
                         textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"观景点\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
+                        所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"观景点\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
+                        tmp1++;
                         break;
                         break;
                     default:
                         break;
                 }
             }
+            
+            if (tmp1 == mapI.PointsOfInterest.Count)
+            {
+                if (mapI.Id == 50)
+                {
+                    string[] assd = {
+                        "   { \"zoneid\": \"50\",\"itemid\": \"2336\",\"type\": \"waypoint\",\"name\": \"机场传送点\",\"pos\": { \"x\": 16563.4, \"y\": 15752.9},\"chat_link\": \"[&BCAJAAA=]\"},",
+                        "   { \"zoneid\": \"50\",\"itemid\": \"2970\",\"type\": \"unlock\",\"name\": \"特种部队训练场\",\"pos\": { \"x\": 16618.9, \"y\": 15829.7},\"chat_link\": \"[&BJoLAAA=]\"},"
+                    };
+                    File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
+                }
+                File.AppendAllLines(".\\data\\dboMapPoints.js", 所有1, Encoding.UTF8);
+                tmp1 = 0;
+            }
+
             //解析爱心任务
             //textBox2.AppendText("dboMapTask.js 任务数据:" + 回车);
+            string[] 所有2 = new string[mapI.Tasks.Values.Count];
             foreach (var item in mapI.Tasks.Values)
             {
+                if (item.Id == 114)
+                {
+                    item.Objective = "帮助学者奥伦唬骗星神现世附近的穴居人。";
+                }
                 textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": \"" + item.Objective + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"}," + 回车);
+                所有2[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": \"" + item.Objective + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"},";
+                tmp1++;
+            }
+            if (tmp1 == mapI.Tasks.Values.Count)
+            {
+                File.AppendAllLines(".\\data\\dboMapPoints.js", 所有2, Encoding.UTF8);
+                tmp1 = 0;
             }
             //解析技能挑战
             //textBox2.AppendText("dboMapSklls.js 地区数据:" + 回车);
+            string[] 所有3 = new string[mapI.SkillChallenges.Length];
             foreach (var item in mapI.SkillChallenges)
             {
                 textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": \"技能点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+                所有3[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": \"技能点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
+                tmp1++;
             }
-
+            if (tmp1 == mapI.SkillChallenges.Length)
+            {
+                File.AppendAllLines(".\\data\\dboMapPoints.js", 所有3, Encoding.UTF8);
+                tmp1 = 0;
+            }
             //解析专精
             //textBox2.AppendText("dboMapMasteryPoints.js 专精数据:" + 回车);
+            string[] 所有4 = new string[mapI.MasteryPoints.Length];
             foreach (var item in mapI.MasteryPoints)
             {
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"masteryPoints\",\"name\": \"专精点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"region\": \"" + item.Region + "\",\"type\": \"masteryPoints\",\"name\": \"专精点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);//region
+                所有4[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"region\": \"" + item.Region + "\",\"type\": \"masteryPoints\",\"name\": \"专精点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
+                tmp1++;
+            }
+            if (tmp1 == mapI.MasteryPoints.Length)
+            {
+                File.AppendAllLines(".\\data\\dboMapMasteryPoints.js", 所有4, Encoding.UTF8);
+                tmp1 = 0;
             }
 
             //解析挑战
-            textBox2.AppendText("dboMapAdventures.js 挑战数据:" + 回车);
-            foreach (var item in mapI.Adventures)
-            {
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
-            }
+            //textBox2.AppendText("dboMapAdventures.js 挑战数据:" + 回车);
+            //string[] 所有5 = new string[mapI.Adventures.Length];
+            //foreach (var item in mapI.Adventures)
+            //{
+            //    textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+            //    所有5[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
+            //    tmp1++;
+            //}
+            //if (tmp1 == mapI.Adventures.Length)
+            //{
+            //    File.AppendAllLines(".\\data\\dboMapAdventures.js", 所有5, Encoding.UTF8);
+            //    tmp1 = 0;
+            //}
 
             //解析地区
             textBox2.AppendText("dboMapSectors.js 地区数据:" + 回车);
+            string[] 所有6 = new string[mapI.Sectors.Values.Count];
             foreach (var item in mapI.Sectors.Values)
             {
                 
                 textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":"+ getbounds(item.Bounds) + "}," + 回车);
+                所有6[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "},";
+                tmp1++;
+            }
+            if (tmp1 == mapI.Sectors.Values.Count)
+            {
+                File.AppendAllLines(".\\data\\dboMapSectors.js", 所有6, Encoding.UTF8);
+                tmp1 = 0;
             }
 
             //解析完成---
             textBox2.AppendText("解构完成 - - 可以开始下一个地图" + 回车);
             if (Properties.Settings.Default.自动获取信息)
             {
-                当前项目排序++;
-                label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
-                label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
+                if (地板集合.Length - 1 > 当前项目排序)
+                {
+                    当前项目排序++;
+                    label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
+                    label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
+                }
+                else
+                {
+                    timer2.Stop();
+                    timer2.Enabled = false;
+                    结束数据文件();
+                    当前项目排序 = 0;
+                }
                 下载地图信息中 = false;
+            }
+            else
+            {
+                if (地板集合.Length - 1 > 当前项目排序)
+                {
+
+                }
+                else
+                {
+                    结束数据文件();
+                    当前项目排序 = 0;
+                }
             }
         }
 
