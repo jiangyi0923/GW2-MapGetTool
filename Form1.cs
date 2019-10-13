@@ -17,6 +17,7 @@ namespace GW2MapGetTool
     public partial class Form1 : Form
     {
         #region 地图图片获取模块公共参数
+        public int 地层 = Properties.Settings.Default.地层;
         public int t = Properties.Settings.Default.数据;
         public int tx = Properties.Settings.Default.层级数据;
         public int txm = Properties.Settings.Default.最大x获取;
@@ -57,9 +58,24 @@ namespace GW2MapGetTool
             项目数 = 0;
             错误数 = 0;
             flowLayoutPanel1.Controls.Clear();
+            if (!Directory.Exists(Application.StartupPath + "/0/" + tx + "/" + t))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "/0/" + tx + "/" + t);
+                Application.DoEvents();
+            }
             if (!Directory.Exists(Application.StartupPath + "/1/" + tx + "/" + t))
             {
                 Directory.CreateDirectory(Application.StartupPath + "/1/" + tx + "/" + t);
+                Application.DoEvents();
+            }
+            if (!Directory.Exists(Application.StartupPath + "/2/" + tx + "/" + t))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "/2/" + tx + "/" + t);
+                Application.DoEvents();
+            }
+            if (!Directory.Exists(Application.StartupPath + "/3/" + tx + "/" + t))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "/3/" + tx + "/" + t);
                 Application.DoEvents();
             }
             {
@@ -95,14 +111,14 @@ namespace GW2MapGetTool
         {
 
             System.Threading.Thread.Sleep(300);
-            if (!File.Exists(Application.StartupPath + "/1/" + tx + "/" + ii + "/" + iie + ".jpg") || File.ReadAllBytes(Application.StartupPath + "/1/" + tx + "/" + ii + "/" + iie + ".jpg").Length < 2)
+            if (!File.Exists(Application.StartupPath + "/" + 地层 + "/" + tx + "/" + ii + "/" + iie + ".jpg") || File.ReadAllBytes(Application.StartupPath + "/" + 地层 + "/" + tx + "/" + ii + "/" + iie + ".jpg").Length < 2)
             {
                 var wc2 = new WebClient();
 
                 try
                 {
-                    Uri dws = new Uri("http://tiles.guildwars2.com/1/1/" + tx + "/" + ii + "/" + iie + ".jpg");
-                    wc2.DownloadFile(dws, Application.StartupPath + "/1/" + tx + "/" + ii + "/" + iie + ".jpg");
+                    Uri dws = new Uri("http://tiles.guildwars2.com/1/" + 地层 + "/" + tx + "/" + ii + "/" + iie + ".jpg");
+                    wc2.DownloadFile(dws, Application.StartupPath + "/" + 地层 + "/" + tx + "/" + ii + "/" + iie + ".jpg");
                     button.BackColor = Color.Green;
                     textBox1.AppendText(tx.ToString() + "-" + ii.ToString() + "-" + iie.ToString() + "完成\r\n");
                     完成数++;
@@ -193,9 +209,9 @@ namespace GW2MapGetTool
             {
                 if (错误数 == 项目数 && 项目数 == 层级X数目[tx])
                 {
-                    if (Directory.Exists(Application.StartupPath + "/1/" + tx + "/" + t))
+                    if (Directory.Exists(Application.StartupPath + "/" + 地层 + "/" + tx + "/" + t))
                     {
-                        Directory.Delete(Application.StartupPath + "/1/" + tx + "/" + t);
+                        Directory.Delete(Application.StartupPath + "/" + 地层 + "/" + tx + "/" + t);
                     }
                     if (tx < 7)
                     {
@@ -256,6 +272,36 @@ namespace GW2MapGetTool
                 Properties.Settings.Default.层级数据 = tx;
                 Properties.Settings.Default.Save();
             }
+        }
+        //地层+
+        private void button15_Click_1(object sender, EventArgs e)
+        {
+            if (地层 <3)
+            {
+                地层++;
+                label22.Text = 地层.ToString();
+                Properties.Settings.Default.地层 = 地层;
+                Properties.Settings.Default.Save();
+            }
+        }
+        //地层-
+        private void button14_Click_1(object sender, EventArgs e)
+        {
+            if (地层 > 0)
+            {
+                地层--;
+                label22.Text = 地层.ToString();
+                Properties.Settings.Default.地层 = 地层;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            地层 = 0;
+            label22.Text = 地层.ToString();
+            Properties.Settings.Default.地层 = 地层;
+            Properties.Settings.Default.Save();
         }
 
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -322,6 +368,7 @@ namespace GW2MapGetTool
             label3.Text = "0";
             label7.Text = "0";
             label8.Text = tx.ToString();
+            label22.Text = 地层.ToString();
             numericUpDown1.Value = 层级X数目[1];
             numericUpDown2.Value = 层级X数目[2];
             numericUpDown3.Value = 层级X数目[3];
@@ -362,7 +409,7 @@ namespace GW2MapGetTool
 
         #endregion
 
-        //重载默认
+        #region 地图数据获取
         private void button10_Click(object sender, EventArgs e)
         {
             重新载入();
@@ -464,17 +511,17 @@ namespace GW2MapGetTool
             dataGridView1.DataSource = dataTable;
         }
 
-        public void 初始化数据文件() 
+        public void 初始化数据文件()
         {
             if (!Directory.Exists(".\\data"))
             {
                 Directory.CreateDirectory(".\\data");
             }
-            string sl1 =  "var mapzone = ["+ System.Environment.NewLine;
-            string sl2 =  "var mapsasterypoints = [" + System.Environment.NewLine;
-            string sl3 =  "var mappoints = [" + System.Environment.NewLine;
-            string sl4 =  "var mapsectors = [" + System.Environment.NewLine;
-            string sl5 =  "var mapadventure = [" + System.Environment.NewLine;
+            string sl1 = "var mapzone = [" + System.Environment.NewLine;
+            string sl2 = "var mapsasterypoints = [" + System.Environment.NewLine;
+            string sl3 = "var mappoints = [" + System.Environment.NewLine;
+            string sl4 = "var mapsectors = [" + System.Environment.NewLine;
+            string sl5 = "var mapadventure = [" + System.Environment.NewLine;
             File.WriteAllText(".\\data\\dboMapZone.js", sl1, Encoding.UTF8);
             File.WriteAllText(".\\data\\dboMapMasteryPoints.js", sl2, Encoding.UTF8);
             File.WriteAllText(".\\data\\dboMapPoints.js", sl3, Encoding.UTF8);
@@ -494,7 +541,7 @@ namespace GW2MapGetTool
             string TMP4 = File.ReadAllText(".\\data\\dboMapSectors.js", Encoding.UTF8);
             //string TMP5 = File.ReadAllText(".\\data\\dboMapAdventures.js", Encoding.UTF8);
 
-            TMP1 = TMP1.Substring(0, TMP1.Length - 3) + System.Environment.NewLine; 
+            TMP1 = TMP1.Substring(0, TMP1.Length - 3) + System.Environment.NewLine;
             TMP2 = TMP2.Substring(0, TMP2.Length - 3) + System.Environment.NewLine;
             TMP3 = TMP3.Substring(0, TMP3.Length - 3) + System.Environment.NewLine;
             TMP4 = TMP4.Substring(0, TMP4.Length - 3) + System.Environment.NewLine;
@@ -519,7 +566,7 @@ namespace GW2MapGetTool
             //fsObj.Close();
 
 
-            textBox2.AppendText("全部完成并保存文件"+回车);
+            textBox2.AppendText("全部完成并保存文件" + 回车);
         }
 
         //开始
@@ -535,16 +582,16 @@ namespace GW2MapGetTool
             {
                 下载数据();
             }
-            
+
         }
         //增加地图
         private void button9_Click(object sender, EventArgs e)
         {
-            if (地板集合.Length-1 > 当前项目排序)
+            if (地板集合.Length - 1 > 当前项目排序)
             {
                 当前项目排序++;
                 label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
-                label21.Text = "当前地图排序:" + 当前项目排序.ToString()+"/"+ (地板集合.Length - 1);
+                label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
             }
         }
         //减少地图
@@ -593,7 +640,7 @@ namespace GW2MapGetTool
                 地图ID集合[i] = int.Parse(dataTable.Rows[i][3].ToString());
                 //textBox2.AppendText(dataTable.Rows[i][0].ToString() + "-地板:" + 地板集合[i] + ",地区:" + 地区集合[i] + ",地图ID:" + 地图ID集合[i] + "\r\n");
             }
-            textBox2.AppendText("赋值参数完成"+回车);
+            textBox2.AppendText("赋值参数完成" + 回车);
             label20.Text = "当前地图ID:" + 地图ID集合[当前项目排序].ToString();
             label21.Text = "当前地图排序:" + 当前项目排序.ToString() + "/" + (地板集合.Length - 1);
         }
@@ -620,7 +667,7 @@ namespace GW2MapGetTool
             传送 = 爱心 = 地标 = 技能 = 专精 = 观景 = 0;
             //根据当前下载数据
 
-            textBox2.AppendText("尝试获取:排序- "+ 当前项目排序 + " 地图ID:" + 地图ID集合[当前项目排序] + 回车);
+            textBox2.AppendText("尝试获取:排序- " + 当前项目排序 + " 地图ID:" + 地图ID集合[当前项目排序] + 回车);
             string jsonString = "";
             try
             {
@@ -640,9 +687,9 @@ namespace GW2MapGetTool
 
             textBox2.AppendText("当前排序:" + 当前项目排序 + "开始解析" + 回车);
             //赋值数据
-            var mapI =  MapinfosJs.FromJson(jsonString);
+            var mapI = MapinfosJs.FromJson(jsonString);
             //解析数据---
-            
+
             textBox2.AppendText("当前排序:" + 当前项目排序 + " - " + mapI.Name + " 解析完成" + 回车);
 
             //解析各种点
@@ -679,7 +726,7 @@ namespace GW2MapGetTool
                         }
 
 
-                        textBox2.AppendText("{ \"zoneid\": \""+ mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \""+item.Value.Name+"\",\"pos\": { \"x\": "+ item.Value.Coord[0] + ", \"y\": "+ item.Value.Coord[1] + "},\"chat_link\": \""+ item.Value.ChatLink+ "\"}," + 回车);
+                        textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"" + item.Value.Name + "\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
 
                         所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"" + item.Value.Name + "\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
                         tmp1++;
@@ -700,7 +747,7 @@ namespace GW2MapGetTool
                         break;
                 }
             }
-            
+
             if (tmp1 == mapI.PointsOfInterest.Count)
             {
                 if (mapI.Id == 18)
@@ -712,7 +759,7 @@ namespace GW2MapGetTool
                         "{ \"zoneid\": \"18\",\"itemid\": \"265\",\"type\": \"landmark\",\"name\": \"内阁议事厅\",\"pos\": { \"x\": 11246.5, \"y\": 11118.5},\"chat_link\": \"[&BAkBAAA=]\"},",
                         "{ \"zoneid\": \"18\",\"itemid\": \"270\",\"type\": \"landmark\",\"name\": \"中央广场\",\"pos\": { \"x\": 11245, \"y\": 10939.2},\"chat_link\": \"[&BA4BAAA=]\"},"
                     };
-                    地标 = 地标+5;
+                    地标 = 地标 + 5;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
                 }
 
@@ -898,8 +945,8 @@ namespace GW2MapGetTool
             string[] 所有6 = new string[mapI.Sectors.Values.Count];
             foreach (var item in mapI.Sectors.Values)
             {
-                
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":"+ getbounds(item.Bounds) + "}," + 回车);
+
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "}," + 回车);
                 所有6[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "},";
                 tmp1++;
             }
@@ -919,22 +966,22 @@ namespace GW2MapGetTool
             if (mapI.Id == 1147)
             {
                 mapI.ContinentRect[0][1] = 12160;
-                mapI.ContinentRect[0][0] = 3602; 
+                mapI.ContinentRect[0][0] = 3602;
                 mapI.ContinentRect[1][1] = 13954;
                 mapI.ContinentRect[1][0] = 4379;
             }
             if (mapI.Id == 1149)
             {
                 mapI.ContinentRect[0][1] = 12160;
-                mapI.ContinentRect[0][0] = 2825; 
-                mapI.ContinentRect[1][1] = 13954; 
+                mapI.ContinentRect[0][0] = 2825;
+                mapI.ContinentRect[1][1] = 13954;
                 mapI.ContinentRect[1][0] = 3602;
             }
             if (mapI.Id == 1156)
             {
                 mapI.ContinentRect[0][1] = 12160;
-                mapI.ContinentRect[0][0] = 2048;  
-                mapI.ContinentRect[1][1] = 13954; 
+                mapI.ContinentRect[0][0] = 2048;
+                mapI.ContinentRect[1][1] = 13954;
                 mapI.ContinentRect[1][0] = 2825;
             }
 
@@ -943,7 +990,7 @@ namespace GW2MapGetTool
 
             //  \"items\":[ "+爱心+","+技能+","+传送+","+观景+","+地标+","+专精+"],
             textBox2.AppendText("{\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": \"" + mapI.Name + "\", \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," + 回车);
-            string[] sl1 =  { "  {\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": \"" + mapI.Name + "\", \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," };
+            string[] sl1 = { "  {\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": \"" + mapI.Name + "\", \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," };
             File.AppendAllLines(".\\data\\dboMapZone.js", sl1, Encoding.UTF8);
 
 
@@ -985,8 +1032,8 @@ namespace GW2MapGetTool
             string tmp = "[";
             for (int i = 0; i < bounds.Length; i++)
             {
-                tmp += "["+ bounds[i][0]+","+ bounds[i][1] ;
-                if (i != bounds.Length-1)
+                tmp += "[" + bounds[i][0] + "," + bounds[i][1];
+                if (i != bounds.Length - 1)
                 {
                     tmp += "],";
                 }
@@ -1001,11 +1048,17 @@ namespace GW2MapGetTool
 
         private void Timer2_Tick(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.自动获取信息 && !下载地图信息中&& 当前项目排序 < 地图ID集合.Length)
+            if (Properties.Settings.Default.自动获取信息 && !下载地图信息中 && 当前项目排序 < 地图ID集合.Length)
             {
                 下载地图信息中 = true;
                 开始获取地图数据();
             }
         }
+
+
+
+        #endregion
+        //重载默认
+
     }
 }

@@ -178,5 +178,17 @@ namespace GW2MapGetTool.Properties {
                 this["自动获取信息"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int 地层 {
+            get {
+                return ((int)(this["地层"]));
+            }
+            set {
+                this["地层"] = value;
+            }
+        }
     }
 }
