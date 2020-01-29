@@ -507,6 +507,7 @@ namespace GW2MapGetTool
             dataTable.Rows.Add(new object[] { "雷云高峰", 1, 1, 1310 });
             dataTable.Rows.Add(new object[] { "坠龙之地", 49, 12, 1317 });
             dataTable.Rows.Add(new object[] { "戈瑟玛山谷", 1, 2, 1330 });
+            dataTable.Rows.Add(new object[] { "波卓拉边境", 1, 1, 1343 });
             dataTable.WriteXml(".\\地图参数设置保存.xml", XmlWriteMode.WriteSchema, true);
             dataGridView1.DataSource = dataTable;
         }
@@ -726,9 +727,9 @@ namespace GW2MapGetTool
                         }
 
 
-                        textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"" + item.Value.Name + "\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
+                        textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": '" + item.Value.Name + "',\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
 
-                        所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"" + item.Value.Name + "\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
+                        所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": '" + item.Value.Name + "',\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
                         tmp1++;
 
                         break;
@@ -738,8 +739,8 @@ namespace GW2MapGetTool
                             观景++;
                         }
 
-                        textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"观景点\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
-                        所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": \"观景点\",\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
+                        textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": '观景点',\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"}," + 回车);
+                        所有1[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Value.Id + "\",\"type\": \"" + item.Value.Type + "\",\"name\": '观景点',\"pos\": { \"x\": " + item.Value.Coord[0] + ", \"y\": " + item.Value.Coord[1] + "},\"chat_link\": \"" + item.Value.ChatLink + "\"},";
                         tmp1++;
                         break;
                         break;
@@ -753,11 +754,11 @@ namespace GW2MapGetTool
                 if (mapI.Id == 18)
                 {
                     string[] assd = {
-                        "{ \"zoneid\": \"18\",\"itemid\": \"253\",\"type\": \"landmark\",\"name\": \"六真神神殿\",\"pos\": { \"x\": 11164.5, \"y\": 10716},\"chat_link\": \"[&BP0AAAA=]\"},",
-                        "{ \"zoneid\": \"18\",\"itemid\": \"254\",\"type\": \"landmark\",\"name\": \"炽天使总部\",\"pos\": { \"x\": 11332.6, \"y\": 10728.8},\"chat_link\": \"[&BP4AAAA=]\"},",
-                        "{ \"zoneid\": \"18\",\"itemid\": \"255\",\"type\": \"landmark\",\"name\": \"女王的王座室\",\"pos\": { \"x\": 11248, \"y\": 10674.3},\"chat_link\": \"[&BP8AAAA=]\"},",
-                        "{ \"zoneid\": \"18\",\"itemid\": \"265\",\"type\": \"landmark\",\"name\": \"内阁议事厅\",\"pos\": { \"x\": 11246.5, \"y\": 11118.5},\"chat_link\": \"[&BAkBAAA=]\"},",
-                        "{ \"zoneid\": \"18\",\"itemid\": \"270\",\"type\": \"landmark\",\"name\": \"中央广场\",\"pos\": { \"x\": 11245, \"y\": 10939.2},\"chat_link\": \"[&BA4BAAA=]\"},"
+                        "{ \"zoneid\": \"18\",\"itemid\": \"253\",\"type\": \"landmark\",\"name\": '六真神神殿',\"pos\": { \"x\": 11164.5, \"y\": 10716},\"chat_link\": \"[&BP0AAAA=]\"},",
+                        "{ \"zoneid\": \"18\",\"itemid\": \"254\",\"type\": \"landmark\",\"name\": '炽天使总部',\"pos\": { \"x\": 11332.6, \"y\": 10728.8},\"chat_link\": \"[&BP4AAAA=]\"},",
+                        "{ \"zoneid\": \"18\",\"itemid\": \"255\",\"type\": \"landmark\",\"name\": '女王的王座室',\"pos\": { \"x\": 11248, \"y\": 10674.3},\"chat_link\": \"[&BP8AAAA=]\"},",
+                        "{ \"zoneid\": \"18\",\"itemid\": \"265\",\"type\": \"landmark\",\"name\": '内阁议事厅',\"pos\": { \"x\": 11246.5, \"y\": 11118.5},\"chat_link\": \"[&BAkBAAA=]\"},",
+                        "{ \"zoneid\": \"18\",\"itemid\": \"270\",\"type\": \"landmark\",\"name\": '中央广场',\"pos\": { \"x\": 11245, \"y\": 10939.2},\"chat_link\": \"[&BA4BAAA=]\"},"
                     };
                     地标 = 地标 + 5;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -766,8 +767,8 @@ namespace GW2MapGetTool
                 if (mapI.Id == 50)
                 {
                     string[] assd = {
-                        "   { \"zoneid\": \"50\",\"itemid\": \"2336\",\"type\": \"waypoint\",\"name\": \"机场传送点\",\"pos\": { \"x\": 16563.4, \"y\": 15752.9},\"chat_link\": \"[&BCAJAAA=]\"},",
-                        "   { \"zoneid\": \"50\",\"itemid\": \"2970\",\"type\": \"unlock\",\"name\": \"特种部队训练场\",\"pos\": { \"x\": 16618.9, \"y\": 15829.7},\"chat_link\": \"[&BJoLAAA=]\"},"
+                        "   { \"zoneid\": \"50\",\"itemid\": \"2336\",\"type\": \"waypoint\",\"name\": '机场传送点',\"pos\": { \"x\": 16563.4, \"y\": 15752.9},\"chat_link\": \"[&BCAJAAA=]\"},",
+                        "   { \"zoneid\": \"50\",\"itemid\": \"2970\",\"type\": \"unlock\",\"name\": '特种部队训练场',\"pos\": { \"x\": 16618.9, \"y\": 15829.7},\"chat_link\": \"[&BJoLAAA=]\"},"
                     };
                     传送++;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -776,17 +777,17 @@ namespace GW2MapGetTool
                 if (mapI.Id == 139)
                 {
                     string[] assd = {
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1168\",\"type\": \"landmark\",\"name\": \"秘法之眼部门\",\"pos\": { \"x\": 5858.55, \"y\": 20909},\"chat_link\": \"[&BJAEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1169\",\"type\": \"landmark\",\"name\": \"仿真宠物露台\",\"pos\": { \"x\": 6169.29, \"y\": 20714.9},\"chat_link\": \"[&BJEEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1174\",\"type\": \"landmark\",\"name\": \"修会招募站\",\"pos\": { \"x\": 5982.4, \"y\": 20937.7},\"chat_link\": \"[&BJYEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1176\",\"type\": \"landmark\",\"name\": \"锻造大厅\",\"pos\": { \"x\": 6110.87, \"y\": 20665.6},\"chat_link\": \"[&BJgEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1178\",\"type\": \"landmark\",\"name\": \"制皮大厅\",\"pos\": { \"x\": 5926.53, \"y\": 20886.5},\"chat_link\": \"[&BJoEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1179\",\"type\": \"landmark\",\"name\": \"守夜人招募站\",\"pos\": { \"x\": 6123.51, \"y\": 20591.1},\"chat_link\": \"[&BJsEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1184\",\"type\": \"landmark\",\"name\": \"工艺大厅\",\"pos\": { \"x\": 5829.77, \"y\": 20615},\"chat_link\": \"[&BKAEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1170\",\"type\": \"landmark\",\"name\": \"秘法议会\",\"pos\": { \"x\": 5946.24, \"y\": 20707.7},\"chat_link\": \"[&BJIEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1172\",\"type\": \"landmark\",\"name\": \"审讯团招募站\",\"pos\": { \"x\": 5915.89, \"y\": 20971.1},\"chat_link\": \"[&BJQEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1173\",\"type\": \"landmark\",\"name\": \"和平制造者总部\",\"pos\": { \"x\": 5764.1, \"y\": 20565.3},\"chat_link\": \"[&BJUEAAA=]\"},",
-                            "   { \"zoneid\": \"139\",\"itemid\": \"1180\",\"type\": \"landmark\",\"name\": \"水族馆\",\"pos\": { \"x\": 6142.08, \"y\": 20657.7},\"chat_link\": \"[&BJwEAAA=]\"},"
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1168\",\"type\": \"landmark\",\"name\": '秘法之眼部门',\"pos\": { \"x\": 5858.55, \"y\": 20909},\"chat_link\": \"[&BJAEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1169\",\"type\": \"landmark\",\"name\": '仿真宠物露台',\"pos\": { \"x\": 6169.29, \"y\": 20714.9},\"chat_link\": \"[&BJEEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1174\",\"type\": \"landmark\",\"name\": '修会招募站',\"pos\": { \"x\": 5982.4, \"y\": 20937.7},\"chat_link\": \"[&BJYEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1176\",\"type\": \"landmark\",\"name\": '锻造大厅',\"pos\": { \"x\": 6110.87, \"y\": 20665.6},\"chat_link\": \"[&BJgEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1178\",\"type\": \"landmark\",\"name\": '制皮大厅',\"pos\": { \"x\": 5926.53, \"y\": 20886.5},\"chat_link\": \"[&BJoEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1179\",\"type\": \"landmark\",\"name\": '守夜人招募站',\"pos\": { \"x\": 6123.51, \"y\": 20591.1},\"chat_link\": \"[&BJsEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1184\",\"type\": \"landmark\",\"name\": '工艺大厅',\"pos\": { \"x\": 5829.77, \"y\": 20615},\"chat_link\": \"[&BKAEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1170\",\"type\": \"landmark\",\"name\": '秘法议会',\"pos\": { \"x\": 5946.24, \"y\": 20707.7},\"chat_link\": \"[&BJIEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1172\",\"type\": \"landmark\",\"name\": '审讯团招募站',\"pos\": { \"x\": 5915.89, \"y\": 20971.1},\"chat_link\": \"[&BJQEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1173\",\"type\": \"landmark\",\"name\": '和平制造者总部',\"pos\": { \"x\": 5764.1, \"y\": 20565.3},\"chat_link\": \"[&BJUEAAA=]\"},",
+                            "   { \"zoneid\": \"139\",\"itemid\": \"1180\",\"type\": \"landmark\",\"name\": '水族馆',\"pos\": { \"x\": 6142.08, \"y\": 20657.7},\"chat_link\": \"[&BJwEAAA=]\"},"
                     };
                     地标 = 地标 + 11;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -794,20 +795,20 @@ namespace GW2MapGetTool
                 if (mapI.Id == 91)
                 {
                     string[] assd = {
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1147\",\"type\": \"landmark\",\"name\": \"隐秘营帐\",\"pos\": { \"x\": 10224.1, \"y\": 21056.8},\"chat_link\": \"[&BHsEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1148\",\"type\": \"landmark\",\"name\": \"辰荫苗圃\",\"pos\": { \"x\": 10467.6, \"y\": 21245},\"chat_link\": \"[&BHwEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1149\",\"type\": \"landmark\",\"name\": \"德曼驻地\",\"pos\": { \"x\": 10206.5, \"y\": 20981.8},\"chat_link\": \"[&BH0EAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1150\",\"type\": \"landmark\",\"name\": \"守夜人树屋\",\"pos\": { \"x\": 10267.1, \"y\": 21158.4},\"chat_link\": \"[&BH4EAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1153\",\"type\": \"landmark\",\"name\": \"后根隧道\",\"pos\": { \"x\": 10584.4, \"y\": 21258.2},\"chat_link\": \"[&BIEEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1154\",\"type\": \"landmark\",\"name\": \"人马小径\",\"pos\": { \"x\": 10376.4, \"y\": 21180.3},\"chat_link\": \"[&BIIEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1151\",\"type\": \"landmark\",\"name\": \"母树之魂\",\"pos\": { \"x\": 10421, \"y\": 21097.6},\"chat_link\": \"[&BH8EAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1159\",\"type\": \"landmark\",\"name\": \"文塔里石碑\",\"pos\": { \"x\": 10415.6, \"y\": 21020.1},\"chat_link\": \"[&BIcEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1141\",\"type\": \"landmark\",\"name\": \"艾菲的家\",\"pos\": { \"x\": 10402, \"y\": 20863.3},\"chat_link\": \"[&BHUEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1142\",\"type\": \"landmark\",\"name\": \"卡赫丁斯的家\",\"pos\": { \"x\": 10423.9, \"y\": 21237.9},\"chat_link\": \"[&BHYEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1143\",\"type\": \"landmark\",\"name\": \"利安诺克的家\",\"pos\": { \"x\": 10529, \"y\": 20975},\"chat_link\": \"[&BHcEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1144\",\"type\": \"landmark\",\"name\": \"凯西的家\",\"pos\": { \"x\": 10243.4, \"y\": 21206.8},\"chat_link\": \"[&BHgEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1145\",\"type\": \"landmark\",\"name\": \"玛洛姆迪的家\",\"pos\": { \"x\": 10211.6, \"y\": 21088.2},\"chat_link\": \"[&BHkEAAA=]\"},",
-                        "{    \"zoneid\": \"91\",\"itemid\": \"1146\",\"type\": \"landmark\",\"name\": \"奈亚姆的家\",\"pos\": { \"x\": 10607.2, \"y\": 21046.6},\"chat_link\": \"[&BHoEAAA=]\"},"
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1147\",\"type\": \"landmark\",\"name\": '隐秘营帐',\"pos\": { \"x\": 10224.1, \"y\": 21056.8},\"chat_link\": \"[&BHsEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1148\",\"type\": \"landmark\",\"name\": '辰荫苗圃',\"pos\": { \"x\": 10467.6, \"y\": 21245},\"chat_link\": \"[&BHwEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1149\",\"type\": \"landmark\",\"name\": '德曼驻地',\"pos\": { \"x\": 10206.5, \"y\": 20981.8},\"chat_link\": \"[&BH0EAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1150\",\"type\": \"landmark\",\"name\": '守夜人树屋',\"pos\": { \"x\": 10267.1, \"y\": 21158.4},\"chat_link\": \"[&BH4EAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1153\",\"type\": \"landmark\",\"name\": '后根隧道',\"pos\": { \"x\": 10584.4, \"y\": 21258.2},\"chat_link\": \"[&BIEEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1154\",\"type\": \"landmark\",\"name\": '人马小径',\"pos\": { \"x\": 10376.4, \"y\": 21180.3},\"chat_link\": \"[&BIIEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1151\",\"type\": \"landmark\",\"name\": '母树之魂',\"pos\": { \"x\": 10421, \"y\": 21097.6},\"chat_link\": \"[&BH8EAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1159\",\"type\": \"landmark\",\"name\": '文塔里石碑',\"pos\": { \"x\": 10415.6, \"y\": 21020.1},\"chat_link\": \"[&BIcEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1141\",\"type\": \"landmark\",\"name\": '艾菲的家',\"pos\": { \"x\": 10402, \"y\": 20863.3},\"chat_link\": \"[&BHUEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1142\",\"type\": \"landmark\",\"name\": '卡赫丁斯的家',\"pos\": { \"x\": 10423.9, \"y\": 21237.9},\"chat_link\": \"[&BHYEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1143\",\"type\": \"landmark\",\"name\": '利安诺克的家',\"pos\": { \"x\": 10529, \"y\": 20975},\"chat_link\": \"[&BHcEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1144\",\"type\": \"landmark\",\"name\": '凯西的家',\"pos\": { \"x\": 10243.4, \"y\": 21206.8},\"chat_link\": \"[&BHgEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1145\",\"type\": \"landmark\",\"name\": '玛洛姆迪的家',\"pos\": { \"x\": 10211.6, \"y\": 21088.2},\"chat_link\": \"[&BHkEAAA=]\"},",
+                        "{    \"zoneid\": \"91\",\"itemid\": \"1146\",\"type\": \"landmark\",\"name\": '奈亚姆的家',\"pos\": { \"x\": 10607.2, \"y\": 21046.6},\"chat_link\": \"[&BHoEAAA=]\"},"
                     };
                     地标 = 地标 + 14;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -816,21 +817,21 @@ namespace GW2MapGetTool
                 if (mapI.Id == 1195)
                 {
                     string[] assd = {
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2490\",\"type\": \"landmark\",\"name\": \"第六号宝库\",\"pos\": { \"x\": 4094.98, \"y\": 26051.5},\"chat_link\": \"[&BLoJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2497\",\"type\": \"landmark\",\"name\": \"泡沫基座\",\"pos\": { \"x\": 4444.18, \"y\": 25071.3},\"chat_link\": \"[&BMEJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2499\",\"type\": \"landmark\",\"name\": \"次要平台\",\"pos\": { \"x\": 3293.61, \"y\": 25551.2},\"chat_link\": \"[&BMMJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2504\",\"type\": \"landmark\",\"name\": \"沸腾之柱\",\"pos\": { \"x\": 3194.11, \"y\": 24791.7},\"chat_link\": \"[&BMgJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2492\",\"type\": \"landmark\",\"name\": \"阿苏拉星门\",\"pos\": { \"x\": 3120.01, \"y\": 25422.8},\"chat_link\": \"[&BLwJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2500\",\"type\": \"landmark\",\"name\": \"沙石拱门\",\"pos\": { \"x\": 3788.24, \"y\": 24873},\"chat_link\": \"[&BMQJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2503\",\"type\": \"landmark\",\"name\": \"囚犯区\",\"pos\": { \"x\": 4408.88, \"y\": 25016.9},\"chat_link\": \"[&BMcJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2507\",\"type\": \"landmark\",\"name\": \"地虫熔炉\",\"pos\": { \"x\": 4274.26, \"y\": 24956.5},\"chat_link\": \"[&BMsJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2508\",\"type\": \"landmark\",\"name\": \"佣兵营地\",\"pos\": { \"x\": 4377.32, \"y\": 24810.4},\"chat_link\": \"[&BMwJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2511\",\"type\": \"landmark\",\"name\": \"灼热之坡\",\"pos\": { \"x\": 3813.66, \"y\": 25272.7},\"chat_link\": \"[&BM8JAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2513\",\"type\": \"landmark\",\"name\": \"墓室\",\"pos\": { \"x\": 3258.89, \"y\": 25726.7},\"chat_link\": \"[&BNEJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2514\",\"type\": \"landmark\",\"name\": \"第九号宝库\",\"pos\": { \"x\": 4268.55, \"y\": 24700},\"chat_link\": \"[&BNIJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2515\",\"type\": \"landmark\",\"name\": \"第十三号宝库II\",\"pos\": { \"x\": 3482.22, \"y\": 24968.1},\"chat_link\": \"[&BNMJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2516\",\"type\": \"landmark\",\"name\": \"审讯团战地实验室\",\"pos\": { \"x\": 3279.5, \"y\": 25130.6},\"chat_link\": \"[&BNQJAAA=]\"},",
-                        "{ \"zoneid\": \"1195\",\"itemid\": \"2519\",\"type\": \"landmark\",\"name\": \"火焰之门\",\"pos\": { \"x\": 4043.98, \"y\": 25311.9},\"chat_link\": \"[&BNcJAAA=]\"},"
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2490\",\"type\": \"landmark\",\"name\": '第六号宝库',\"pos\": { \"x\": 4094.98, \"y\": 26051.5},\"chat_link\": \"[&BLoJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2497\",\"type\": \"landmark\",\"name\": '泡沫基座',\"pos\": { \"x\": 4444.18, \"y\": 25071.3},\"chat_link\": \"[&BMEJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2499\",\"type\": \"landmark\",\"name\": '次要平台',\"pos\": { \"x\": 3293.61, \"y\": 25551.2},\"chat_link\": \"[&BMMJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2504\",\"type\": \"landmark\",\"name\": '沸腾之柱',\"pos\": { \"x\": 3194.11, \"y\": 24791.7},\"chat_link\": \"[&BMgJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2492\",\"type\": \"landmark\",\"name\": '阿苏拉星门',\"pos\": { \"x\": 3120.01, \"y\": 25422.8},\"chat_link\": \"[&BLwJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2500\",\"type\": \"landmark\",\"name\": '沙石拱门',\"pos\": { \"x\": 3788.24, \"y\": 24873},\"chat_link\": \"[&BMQJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2503\",\"type\": \"landmark\",\"name\": '囚犯区',\"pos\": { \"x\": 4408.88, \"y\": 25016.9},\"chat_link\": \"[&BMcJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2507\",\"type\": \"landmark\",\"name\": '地虫熔炉',\"pos\": { \"x\": 4274.26, \"y\": 24956.5},\"chat_link\": \"[&BMsJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2508\",\"type\": \"landmark\",\"name\": '佣兵营地',\"pos\": { \"x\": 4377.32, \"y\": 24810.4},\"chat_link\": \"[&BMwJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2511\",\"type\": \"landmark\",\"name\": '灼热之坡',\"pos\": { \"x\": 3813.66, \"y\": 25272.7},\"chat_link\": \"[&BM8JAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2513\",\"type\": \"landmark\",\"name\": '墓室',\"pos\": { \"x\": 3258.89, \"y\": 25726.7},\"chat_link\": \"[&BNEJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2514\",\"type\": \"landmark\",\"name\": '第九号宝库',\"pos\": { \"x\": 4268.55, \"y\": 24700},\"chat_link\": \"[&BNIJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2515\",\"type\": \"landmark\",\"name\": '第十三号宝库II',\"pos\": { \"x\": 3482.22, \"y\": 24968.1},\"chat_link\": \"[&BNMJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2516\",\"type\": \"landmark\",\"name\": '审讯团战地实验室',\"pos\": { \"x\": 3279.5, \"y\": 25130.6},\"chat_link\": \"[&BNQJAAA=]\"},",
+                        "{ \"zoneid\": \"1195\",\"itemid\": \"2519\",\"type\": \"landmark\",\"name\": '火焰之门',\"pos\": { \"x\": 4043.98, \"y\": 25311.9},\"chat_link\": \"[&BNcJAAA=]\"},"
                     };
                     地标 = 地标 + 15;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -840,8 +841,8 @@ namespace GW2MapGetTool
                 if (mapI.Id == 326)
                 {
                     string[] assd = {
-                        "{ \"zoneid\": \"326\",\"itemid\": \"952\",\"type\": \"landmark\",\"name\": \"科纳特·白熊的阁楼\",\"pos\": { \"x\": 20648.1, \"y\": 14752.5},\"chat_link\": \"[&BLgDAAA=]\"},",
-                        "{ \"zoneid\": \"326\",\"itemid\": \"1135\",\"type\": \"landmark\",\"name\": \"旅行者阁楼\",\"pos\": { \"x\": 20724.6, \"y\": 14766.2},\"chat_link\": \"[&BG8EAAA=]\"},"
+                        "{ \"zoneid\": \"326\",\"itemid\": \"952\",\"type\": \"landmark\",\"name\": '科纳特·白熊的阁楼',\"pos\": { \"x\": 20648.1, \"y\": 14752.5},\"chat_link\": \"[&BLgDAAA=]\"},",
+                        "{ \"zoneid\": \"326\",\"itemid\": \"1135\",\"type\": \"landmark\",\"name\": '旅行者阁楼',\"pos\": { \"x\": 20724.6, \"y\": 14766.2},\"chat_link\": \"[&BG8EAAA=]\"},"
                     };
                     地标 = 地标 + 2;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -850,11 +851,11 @@ namespace GW2MapGetTool
                 if (mapI.Id == 1052)
                 {
                     string[] assd = {
-                        "{ \"zoneid\": \"1052\",\"itemid\": \"1986\",\"type\": \"landmark\",\"name\": \"族母栖木\",\"pos\": { \"x\": 2461.66, \"y\": 15417.6},\"chat_link\": \"[&BMIHAAA=]\"},",
-                        "{ \"zoneid\": \"1052\",\"itemid\": \"2025\",\"type\": \"landmark\",\"name\": \"最终一跃\",\"pos\": { \"x\": 2813.68, \"y\": 15008.3},\"chat_link\": \"[&BOkHAAA=]\"},",
-                        "{ \"zoneid\": \"1052\",\"itemid\": \"2046\",\"type\": \"landmark\",\"name\": \"晋升之环\",\"pos\": { \"x\": 1384.4, \"y\": 15616.6},\"chat_link\": \"[&BP4HAAA=]\"},",
-                        "{ \"zoneid\": \"1052\",\"itemid\": \"2072\",\"type\": \"landmark\",\"name\": \"危耸栖木\",\"pos\": { \"x\": 2863.53, \"y\": 15567.1},\"chat_link\": \"[&BBgIAAA=]\"},",
-                        "{ \"zoneid\": \"1052\",\"itemid\": \"2073\",\"type\": \"landmark\",\"name\": \"静谧森林\",\"pos\": { \"x\": 2000.79, \"y\": 15307.5},\"chat_link\": \"[&BBkIAAA=]\"},"
+                        "{ \"zoneid\": \"1052\",\"itemid\": \"1986\",\"type\": \"landmark\",\"name\": '族母栖木',\"pos\": { \"x\": 2461.66, \"y\": 15417.6},\"chat_link\": \"[&BMIHAAA=]\"},",
+                        "{ \"zoneid\": \"1052\",\"itemid\": \"2025\",\"type\": \"landmark\",\"name\": '最终一跃',\"pos\": { \"x\": 2813.68, \"y\": 15008.3},\"chat_link\": \"[&BOkHAAA=]\"},",
+                        "{ \"zoneid\": \"1052\",\"itemid\": \"2046\",\"type\": \"landmark\",\"name\": '晋升之环',\"pos\": { \"x\": 1384.4, \"y\": 15616.6},\"chat_link\": \"[&BP4HAAA=]\"},",
+                        "{ \"zoneid\": \"1052\",\"itemid\": \"2072\",\"type\": \"landmark\",\"name\": '危耸栖木',\"pos\": { \"x\": 2863.53, \"y\": 15567.1},\"chat_link\": \"[&BBgIAAA=]\"},",
+                        "{ \"zoneid\": \"1052\",\"itemid\": \"2073\",\"type\": \"landmark\",\"name\": '静谧森林',\"pos\": { \"x\": 2000.79, \"y\": 15307.5},\"chat_link\": \"[&BBkIAAA=]\"},"
                     };
                     地标 = 地标 + 5;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -863,9 +864,9 @@ namespace GW2MapGetTool
                 if (mapI.Id == 1165)
                 {
                     string[] assd = {
-                        "{ \"zoneid\": \"1165\",\"itemid\": \"2383\",\"type\": \"landmark\",\"name\": \"牺牲神殿\",\"pos\": { \"x\": 3180.29, \"y\": 14305.8},\"chat_link\": \"[&BE8JAAA=]\"},",
-                        "{ \"zoneid\": \"1165\",\"itemid\": \"2373\",\"type\": \"landmark\",\"name\": \"复苏神殿\",\"pos\": { \"x\": 2434.55, \"y\": 14352.2},\"chat_link\": \"[&BEUJAAA=]\"},",
-                        "{ \"zoneid\": \"1165\",\"itemid\": \"2384\",\"type\": \"landmark\",\"name\": \"火山峭壁\",\"pos\": { \"x\": 2824.64, \"y\": 14254.8},\"chat_link\": \"[&BFAJAAA=]\"},"
+                        "{ \"zoneid\": \"1165\",\"itemid\": \"2383\",\"type\": \"landmark\",\"name\": '牺牲神殿',\"pos\": { \"x\": 3180.29, \"y\": 14305.8},\"chat_link\": \"[&BE8JAAA=]\"},",
+                        "{ \"zoneid\": \"1165\",\"itemid\": \"2373\",\"type\": \"landmark\",\"name\": '复苏神殿',\"pos\": { \"x\": 2434.55, \"y\": 14352.2},\"chat_link\": \"[&BEUJAAA=]\"},",
+                        "{ \"zoneid\": \"1165\",\"itemid\": \"2384\",\"type\": \"landmark\",\"name\": '火山峭壁',\"pos\": { \"x\": 2824.64, \"y\": 14254.8},\"chat_link\": \"[&BFAJAAA=]\"},"
                     };
                     地标 = 地标 + 3;
                     File.AppendAllLines(".\\data\\dboMapPoints.js", assd, Encoding.UTF8);
@@ -880,12 +881,8 @@ namespace GW2MapGetTool
             string[] 所有2 = new string[mapI.Tasks.Values.Count];
             foreach (var item in mapI.Tasks.Values)
             {
-                if (item.Id == 114)
-                {
-                    item.Objective = "帮助学者奥伦唬骗星神现世附近的穴居人。";
-                }
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": \"" + item.Objective + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"}," + 回车);
-                所有2[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": \"" + item.Objective + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"},";
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": '" + item.Objective + "',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"}," + 回车);
+                所有2[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"task\",\"name\": '" + item.Objective + "',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\"},";
                 爱心++;
                 tmp1++;
             }
@@ -899,8 +896,8 @@ namespace GW2MapGetTool
             string[] 所有3 = new string[mapI.SkillChallenges.Length];
             foreach (var item in mapI.SkillChallenges)
             {
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": \"技能点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
-                所有3[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": \"技能点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": '技能点',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+                所有3[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"skill\",\"name\": '技能点',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
                 技能++;
                 tmp1++;
             }
@@ -914,8 +911,8 @@ namespace GW2MapGetTool
             string[] 所有4 = new string[mapI.MasteryPoints.Length];
             foreach (var item in mapI.MasteryPoints)
             {
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"region\": \"" + item.Region + "\",\"type\": \"masteryPoints\",\"name\": \"专精点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);//region
-                所有4[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"region\": \"" + item.Region + "\",\"type\": \"masteryPoints\",\"name\": \"专精点\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"region\": \"" + item.Region + "\",\"type\": \"masteryPoints\",\"name\": '专精点',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);//region
+                所有4[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"region\": \"" + item.Region + "\",\"type\": \"masteryPoints\",\"name\": '专精点',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
                 专精++;
                 tmp1++;
             }
@@ -930,8 +927,8 @@ namespace GW2MapGetTool
             //string[] 所有5 = new string[mapI.Adventures.Length];
             //foreach (var item in mapI.Adventures)
             //{
-            //    textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
-            //    所有5[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
+            //    textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": '" + item.Name + "',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}}," + 回车);
+            //    所有5[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"adventures\",\"name\": '" + item.Name + "',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "}},";
             //    tmp1++;
             //}
             //if (tmp1 == mapI.Adventures.Length)
@@ -946,8 +943,8 @@ namespace GW2MapGetTool
             foreach (var item in mapI.Sectors.Values)
             {
 
-                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "}," + 回车);
-                所有6[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": \"" + item.Name + "\",\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "},";
+                textBox2.AppendText("{ \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": '" + item.Name + "',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "}," + 回车);
+                所有6[tmp1] = "   { \"zoneid\": \"" + mapI.Id + "\",\"itemid\": \"" + item.Id + "\",\"type\": \"sectors\",\"name\": '" + item.Name + "',\"pos\": { \"x\": " + item.Coord[0] + ", \"y\": " + item.Coord[1] + "},\"chat_link\": \"" + item.ChatLink + "\",\"bounds\":" + getbounds(item.Bounds) + "},";
                 tmp1++;
             }
             if (tmp1 == mapI.Sectors.Values.Count)
@@ -989,8 +986,8 @@ namespace GW2MapGetTool
 
 
             //  \"items\":[ "+爱心+","+技能+","+传送+","+观景+","+地标+","+专精+"],
-            textBox2.AppendText("{\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": \"" + mapI.Name + "\", \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," + 回车);
-            string[] sl1 = { "  {\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": \"" + mapI.Name + "\", \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," };
+            textBox2.AppendText("{\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": '" + mapI.Name + "', \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," + 回车);
+            string[] sl1 = { "  {\"zoneid\": \"" + mapI.Id + "\",\"items\":[ " + 爱心 + "," + 技能 + "," + 传送 + "," + 观景 + "," + 地标 + "," + 专精 + "], \"name\": '" + mapI.Name + "', \"level\": { \"min\": " + mapI.MinLevel + ",\"max\": " + mapI.MaxLevel + "},\"area\": { \"top\": " + mapI.ContinentRect[0][1] + ",\"left\": " + mapI.ContinentRect[0][0] + ",\"bottom\": " + mapI.ContinentRect[1][1] + ",\"right\": " + mapI.ContinentRect[1][0] + "}}," };
             File.AppendAllLines(".\\data\\dboMapZone.js", sl1, Encoding.UTF8);
 
 
