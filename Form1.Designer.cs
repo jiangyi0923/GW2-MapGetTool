@@ -68,6 +68,11 @@
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -85,11 +90,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label19 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -532,6 +534,54 @@
             this.tabPage1.Text = "地图图片获取";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(38, 48);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(37, 23);
+            this.button15.TabIndex = 35;
+            this.button15.Text = "增加";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click_1);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(9, 53);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(29, 12);
+            this.label23.TabIndex = 39;
+            this.label23.Text = "地层";
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(115, 48);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(41, 23);
+            this.button14.TabIndex = 36;
+            this.button14.Text = "减少";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click_1);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(162, 48);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(41, 23);
+            this.button16.TabIndex = 38;
+            this.button16.Text = "重置";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(84, 53);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(11, 12);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "0";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tabControl2);
@@ -556,6 +606,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label24);
+            this.tabPage3.Controls.Add(this.comboBox1);
             this.tabPage3.Controls.Add(this.checkBox2);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.label20);
@@ -712,53 +764,26 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
-            // button14
+            // comboBox1
             // 
-            this.button14.Location = new System.Drawing.Point(115, 48);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(41, 23);
-            this.button14.TabIndex = 36;
-            this.button14.Text = "减少";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click_1);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "中文",
+            "English"});
+            this.comboBox1.Location = new System.Drawing.Point(722, 169);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(75, 20);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button15
+            // label24
             // 
-            this.button15.Location = new System.Drawing.Point(38, 48);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(37, 23);
-            this.button15.TabIndex = 35;
-            this.button15.Text = "增加";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click_1);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(84, 53);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(11, 12);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "0";
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(162, 48);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(41, 23);
-            this.button16.TabIndex = 38;
-            this.button16.Text = "重置";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(9, 53);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(29, 12);
-            this.label23.TabIndex = 39;
-            this.label23.Text = "地层";
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(720, 145);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(89, 12);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "语言(language)";
             // 
             // Form1
             // 
@@ -854,6 +879,8 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

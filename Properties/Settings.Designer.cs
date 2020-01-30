@@ -190,5 +190,17 @@ namespace GW2MapGetTool.Properties {
                 this["地层"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int 语言 {
+            get {
+                return ((int)(this["语言"]));
+            }
+            set {
+                this["语言"] = value;
+            }
+        }
     }
 }
