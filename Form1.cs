@@ -392,6 +392,20 @@ namespace GW2MapGetTool
                 重新载入();
             }
             赋值参数();
+
+            dataTable2.Columns.Add(new DataColumn("技能名", typeof(System.String)));
+            dataTable2.Columns.Add(new DataColumn("技能ID", typeof(System.Int32)));
+            dataTable2.Columns.Add(new DataColumn("图标地址", typeof(System.String)));
+            dataTable2.Columns.Add(new DataColumn("下载状态", typeof(System.String)));
+
+            if (File.Exists(".\\技能参数设置保存.xml"))
+            {
+                技能载入();
+            }
+            else
+            {
+                技能重载();
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -433,6 +447,20 @@ namespace GW2MapGetTool
         {
             dataTable.ReadXml(".\\地图参数设置保存.xml");
             dataGridView1.DataSource = dataTable;
+        }
+
+        //技能配置载入
+        private void 技能载入()
+        {
+            dataTable2.ReadXml(".\\技能参数设置保存.xml");
+            dataGridView2.DataSource = dataTable2;
+        }
+
+        private void 技能重载()
+        {
+            dataTable2.Rows.Clear();
+            dataTable2.WriteXml(".\\技能参数设置保存.xml", XmlWriteMode.WriteSchema, true);
+            dataGridView2.DataSource = dataTable2;
         }
 
         private void 重新载入()
@@ -530,8 +558,6 @@ namespace GW2MapGetTool
             File.WriteAllText(".\\data\\dboMapSectors.js", sl4, Encoding.UTF8);
             //File.WriteAllText(".\\data\\dboMapAdventures.js", sl5, Encoding.UTF8);
         }
-
-
 
         public void 结束数据文件()
         {
@@ -1250,6 +1276,138 @@ namespace GW2MapGetTool
         {
             Properties.Settings.Default.语言 = comboBox1.SelectedIndex;
             Properties.Settings.Default.Save();
+        }
+
+
+        //技能公共参数
+        DataTable dataTable2 = new DataTable("skell");
+        string 技能jsonString = "";
+        //技能获取
+        private void button17_Click(object sender, EventArgs e)
+        {
+            
+            Thread thread2 = new Thread(new ParameterizedThreadStart(delegate { 获取技能jons(); }))
+            {
+                IsBackground = true
+            };
+            thread2.Start();
+        }
+
+        public void 获取技能jons() 
+        {
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            HttpWebRequest request = null;
+            HttpWebResponse response = null;
+            Stream ResStream = null;
+            StreamReader streamReader = null;
+            try
+            {
+                textBox3.AppendText("尝试获取" + "\r\n");
+                label2.Text = label1.Text + "尝试获取文件地址";
+                request = (HttpWebRequest)WebRequest.Create(@"https://api.guildwars2.com/v2/skills?ids=all");
+                request.Method = "GET";
+                request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
+                request.Headers.Add("Cache-Control", "max-age=0");
+                //request.Headers.Add("Cookie", "_ga = GA1.2.1482099539.1576411804");
+                request.Headers.Add("Accept-Language", "zh-CN,zh;q=0.9");
+                //request.Headers.Add("Accept-Encoding", "gzip, deflate, br");
+                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Safari/537.36 Core/1.63.5977.400 LBBROWSER/10.1.3752.400";
+                //request.UnsafeAuthenticatedConnectionSharing = true;
+                response = (HttpWebResponse)request.GetResponse();
+
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    response.Headers.Add("Content-Type", "application/json; charset=utf-8"); //content-language:zh
+                    response.Headers.Add("Content-Language", "zh");
+                    ResStream = response.GetResponseStream();
+                    streamReader = new StreamReader(ResStream, Encoding.UTF8);
+                    textBox3.AppendText("获取成功" + "\r\n");
+
+                    string str = string.Empty;
+                    //循环读取从指定网站获得的数据
+                    while ((str = streamReader.ReadLine()) != null)
+                    {
+                        textBox3.AppendText(streamReader.ReadLine() + "\r\n");
+                        技能jsonString += streamReader.ReadLine();
+                    }
+                    
+                    var 所有技能 = Skll.FromJson(技能jsonString);
+                    
+                    textBox3.AppendText("所有技能" + 所有技能.Length + "\r\n");
+                    for (int i = 0; i < 所有技能.Length; i++)
+                    {
+                        textBox3.AppendText("技能" + 所有技能[i].Name+" "+ 所有技能[i].Id + "\r\n");
+                        dataTable2.Rows.Add(new object[] { 所有技能[i].Name, 所有技能[i].Id, 所有技能[i].Icon, "未下载" });
+                        dataTable2.WriteXml(".\\技能参数设置保存.xml", XmlWriteMode.WriteSchema, true);
+                    }
+                    dataGridView2.DataSource = dataTable2;
+                }
+                else
+                {
+                    textBox3.AppendText("失败重试1" + "\r\n");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                textBox3.AppendText("失败重试2" + "\r\n");
+            }
+            finally
+            {
+                if (request != null) request.Abort();
+                if (response != null) response.Close();
+                if (ResStream != null) ResStream.Close();
+                if (streamReader != null) streamReader.Close();
+            }
+        }
+
+        public void 解析技能() 
+        {
+            
+            
+            //dataTable2.Rows.Add(new object[] { "神佑之城", 1, 4, 18 });
+        }
+
+        //技能下载
+        private void button18_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(dataTable2.Rows[1][2].ToString());
+        }
+        //技能清空
+        private void button19_Click(object sender, EventArgs e)
+        {
+            //技能jsonString = "";
+            //技能重载();
+        }
+        //读取
+        private void button20_Click(object sender, EventArgs e)
+        {
+            dataTable2.Clear();
+            dataGridView2.DataSource = dataGridView2;
+            if (textBox4.Text.Length > 0)
+            {
+                textBox3.AppendText("" + "\r\n");
+                var 所有技能 = Skll.FromJson(textBox4.Text);
+
+                textBox3.AppendText("所有技能" + 所有技能.Length + "\r\n");
+                for (int i = 0; i < 所有技能.Length; i++)
+                {
+                    if (所有技能[i].Icon != null)
+                    {
+                        textBox3.AppendText("技能" + 所有技能[i].Name + " " + 所有技能[i].Id + "\r\n");
+                        dataTable2.Rows.Add(new object[] { 所有技能[i].Name, 所有技能[i].Id, 所有技能[i].Icon, "未下载" });
+                        
+                    }
+                }
+                dataTable2.WriteXml(".\\技能参数设置保存.xml", XmlWriteMode.WriteSchema, true);
+                dataGridView2.DataSource = dataTable2;
+            }
+            else
+            {
+                textBox3.AppendText("失败重试1" + "\r\n");
+            }
         }
 
 

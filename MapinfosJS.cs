@@ -142,15 +142,15 @@ namespace GW2MapGetTool
 
     public partial class MapinfosJs
     {
-        public static MapinfosJs FromJson(string json) => JsonConvert.DeserializeObject<MapinfosJs>(json, GW2MapGetTool.Converter.Settings);
+        public static MapinfosJs FromJson(string json) => JsonConvert.DeserializeObject<MapinfosJs>(json, GW2MapGetTool.Converter2.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this MapinfosJs self) => JsonConvert.SerializeObject(self, GW2MapGetTool.Converter.Settings);
+        public static string ToJson(this MapinfosJs self) => JsonConvert.SerializeObject(self, GW2MapGetTool.Converter2.Settings);
     }
 
-    internal static class Converter
+    internal static class Converter2
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {

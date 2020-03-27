@@ -76,6 +76,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -90,8 +92,14 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label19 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button20 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -107,6 +115,8 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -476,6 +486,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -623,6 +634,27 @@
             this.tabPage3.Text = "获取";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(720, 145);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(89, 12);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "语言(language)";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "中文",
+            "English"});
+            this.comboBox1.Location = new System.Drawing.Point(722, 169);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(75, 20);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
@@ -712,7 +744,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(554, 76);
+            this.button12.Location = new System.Drawing.Point(734, 64);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(99, 23);
             this.button12.TabIndex = 4;
@@ -722,7 +754,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(554, 47);
+            this.button11.Location = new System.Drawing.Point(734, 35);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(99, 23);
             this.button11.TabIndex = 3;
@@ -732,7 +764,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(554, 18);
+            this.button10.Location = new System.Drawing.Point(734, 6);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(99, 23);
             this.button10.TabIndex = 2;
@@ -747,7 +779,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 18);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(491, 483);
+            this.dataGridView1.Size = new System.Drawing.Size(563, 483);
             this.dataGridView1.TabIndex = 1;
             // 
             // label19
@@ -764,26 +796,88 @@
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
-            // comboBox1
+            // tabPage5
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "中文",
-            "English"});
-            this.comboBox1.Location = new System.Drawing.Point(722, 169);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(75, 20);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.tabPage5.Controls.Add(this.button20);
+            this.tabPage5.Controls.Add(this.textBox4);
+            this.tabPage5.Controls.Add(this.textBox3);
+            this.tabPage5.Controls.Add(this.button19);
+            this.tabPage5.Controls.Add(this.button18);
+            this.tabPage5.Controls.Add(this.button17);
+            this.tabPage5.Controls.Add(this.dataGridView2);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(853, 539);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "技能获取";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label24
+            // dataGridView2
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(720, 145);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(89, 12);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "语言(language)";
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(8, 8);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(337, 528);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(775, 6);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(75, 23);
+            this.button17.TabIndex = 1;
+            this.button17.Text = "获取";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(775, 46);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 23);
+            this.button18.TabIndex = 2;
+            this.button18.Text = "下载";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(775, 86);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 23);
+            this.button19.TabIndex = 3;
+            this.button19.Text = "清空";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(351, 8);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(180, 523);
+            this.textBox3.TabIndex = 6;
+            // 
+            // textBox4
+            // 
+            this.textBox4.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textBox4.Location = new System.Drawing.Point(537, 28);
+            this.textBox4.MaxLength = 327670000;
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(232, 503);
+            this.textBox4.TabIndex = 7;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(775, 115);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(75, 23);
+            this.button20.TabIndex = 8;
+            this.button20.Text = "读取";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // Form1
             // 
@@ -812,6 +906,9 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -881,6 +978,14 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button20;
     }
 }
 
